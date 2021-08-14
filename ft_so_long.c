@@ -14,12 +14,6 @@ int	check_map_name(char *argv)
 		return (0);
 	if (argv[len - 4] != '.')
 		return (0);
-	len = len - 4;
-	while (len--)
-	{
-		if (argv[len] == '.')
-			return (0);
-	}
 	return (1);
 }
 
