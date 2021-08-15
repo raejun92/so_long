@@ -17,13 +17,52 @@ int	check_map_name(char *argv)
 	return (1);
 }
 
+// 기능: game 구조체 초기화, 리턴: void
+void	init_game(t_game *game)
+{
+	game->mlx = mlx_init();
+	game->win = 0;
+	game->img = 0;
+	game->cnt = 0;
+	game->img_width = 0;
+	game->img_height = 0;
+}
+
+// 기능: 인수로 넣은 맵내용을 game구조체에 저장, 리턴: void
+void	map_parse(t_game *game, char *argv)
+{
+	int		fd;
+	char	buf[2];
+	char	*tmp;
+	char	*chunk;
+
+	fd = open(argv, O_RDONLY); 
+	if (fd < 0)
+		error_msg();
+	tmp = ft_strdup("");
+	while (read(fd, buf, 1) > 0)
+	{
+		buf[1] = '\0';
+		chunk = ft_strjoin(tmp, buf);
+		free(tmp);
+		tmp = chunk;
+	}
+	game->map = ft_split(tmp, '\n');
+	while (*game->map != NULL)
+	{
+		printf("%s\n", *game->map);
+		game->map++;
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	t_game	game;
 	
 	if (argc != 2 || !check_map_name(*(++argv)))
 		error_msg();
-	printf("good");
+	init_game(&game);
+	map_parse(&game, *argv);
 	return (0);
 }
 

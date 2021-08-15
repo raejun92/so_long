@@ -15,18 +15,19 @@
 #define KEY_S	1
 #define KEY_D	2
 
-typedef struct s_map {
-	char	**map;
-}t_map;
+// typedef struct s_map {
+// 	char	**map;
+// }t_map;
 
 typedef struct s_game {
 	void	*mlx;
 	void	*win;
-	void	*mig;
+	void	*img;
 	int		cnt;
 	int		img_width;
 	int 	img_height;
-	t_map	map;
+	// t_map	map;
+	char	**map;
 }t_game;
 
 /* ft_so_long.c */
@@ -34,5 +35,13 @@ typedef struct s_game {
 /* ft_utils.c */
 void	error_msg(void);
 size_t	ft_strlen(const char *s);
+char	*ft_strdup(const char *s1);
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
+
+
+/* ft_utils2.c */
+char	*ft_strjoin(char const *s1, char const *s2);
+char	**ft_split(char const *s, char c);
 
 #endif
