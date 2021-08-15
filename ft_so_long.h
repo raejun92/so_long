@@ -15,10 +15,6 @@
 #define KEY_S	1
 #define KEY_D	2
 
-// typedef struct s_map {
-// 	char	**map;
-// }t_map;
-
 typedef struct s_game {
 	void	*mlx;
 	void	*win;
@@ -26,7 +22,6 @@ typedef struct s_game {
 	int		cnt;
 	int		img_width;
 	int 	img_height;
-	// t_map	map;
 	char	**map;
 }t_game;
 

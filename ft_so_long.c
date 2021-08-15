@@ -49,18 +49,67 @@ void	map_parse(t_game *game, char *argv)
 		tmp = chunk;
 	}
 	game->map = ft_split(tmp, '\n');
-	while (*game->map != NULL)
+	free(tmp);
+}
+
+// 기능: 맵이 직사각형인지 확인, 리턴: void
+void	check_rectangle(char **map)
+{
+	int	len;
+
+	len = ft_strlen(*map);
+	while (*map != NULL)
 	{
-		printf("%s\n", *game->map);
-		game->map++;
+		if (len != ft_strlen(*map))
+			error_msg();
+		map++;
+	}
+}
+
+// 기능: 맵이 1로 둘러싸여 있는지 확인, 리턴: void
+void	check_wall(char **map)
+{
+	int		len;
+	char	**tmp;
+	int		i;
+	int		j;
+
+	tmp = map;
+	len = 0;
+	i = 0;
+	j = 0;
+	while (*tmp != NULL)
+	{
+		tmp++;
+		len++;
+	}
+	while (map[0][i] != '\0')
+	{
+		if (map[0][i] != '1')
+			error_msg();
+		if (map[len - 1][i] != '1')
+			error_msg();
+		i++;
+	}
+	while (j < len)
+	{
+		if (map[j][0] != '1')
+			error_msg();
+		if (map[j][i - 1] != '1')
+			error_msg();
+		j++;
 	}
 }
 
 // 기능: 파싱한 맵이 정상적인 맵인지 확인, 리턴: void
-void	validate_map(t_game *game)
+void	validate_map(t_game game)
 {
-	// 맵이 1로 둘러 쌓여 직사각형인지 확인
+	// 맵이 1로 둘러 쌓여 직사각형인지 확인 -> 모든 라인의 개수가 똑같은 지 확인해야 함
+	check_rectangle(game.map);
+	check_wall(game.map);
 	// 맵에 P,C,E 하나이상인지 확인
+	// check_element(game);
+	
 }
 
 int	main(int argc, char **argv)
@@ -71,7 +120,10 @@ int	main(int argc, char **argv)
 		error_msg();
 	init_game(&game);
 	map_parse(&game, *argv);
-	validate_map(&game);
+	validate_map(game);
+
+
+	// system("leaks a.out > leaks_result_temp; cat leaks_result_temp | grep leaked && rm -rf leaks_result_temp");
 	return (0);
 }
 
