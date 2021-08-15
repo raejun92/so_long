@@ -39,4 +39,14 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	**ft_split(char const *s, char c);
 
+/* ft_parse.c */
+int	check_map_name(char *argv);
+void	map_parse(t_game *game, char *argv);
+
+/* check_map.c */
+void	check_rectangle(char **map);
+void	check_wall(char **map);
+void	check_other_element(char **map);
+void	check_element(char **map);
+
 #endif
