@@ -66,6 +66,21 @@ void	check_rectangle(char **map)
 	}
 }
 
+static void	check_wall2(char **map, int len, int i)
+{
+	int	j;
+
+	j = 0;
+	while (j < len)
+	{
+		if (map[j][0] != '1')
+			error_msg();
+		if (map[j][i - 1] != '1')
+			error_msg();
+		j++;
+	}
+}
+
 // 기능: 맵이 1로 둘러싸여 있는지 확인, 리턴: void
 void	check_wall(char **map)
 {
@@ -91,14 +106,7 @@ void	check_wall(char **map)
 			error_msg();
 		i++;
 	}
-	while (j < len)
-	{
-		if (map[j][0] != '1')
-			error_msg();
-		if (map[j][i - 1] != '1')
-			error_msg();
-		j++;
-	}
+	check_wall2(map, len, i);
 }
 
 // 기능: 파싱한 맵이 정상적인 맵인지 확인, 리턴: void
