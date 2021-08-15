@@ -26,6 +26,7 @@ void	init_game(t_game *game)
 	game->cnt = 0;
 	game->img_width = 0;
 	game->img_height = 0;
+	game->map = 0;
 }
 
 // 기능: 인수로 넣은 맵내용을 game구조체에 저장, 리턴: void
@@ -55,6 +56,13 @@ void	map_parse(t_game *game, char *argv)
 	}
 }
 
+// 기능: 파싱한 맵이 정상적인 맵인지 확인, 리턴: void
+void	validate_map(t_game *game)
+{
+	// 맵이 1로 둘러 쌓여 직사각형인지 확인
+	// 맵에 P,C,E 하나이상인지 확인
+}
+
 int	main(int argc, char **argv)
 {
 	t_game	game;
@@ -63,6 +71,7 @@ int	main(int argc, char **argv)
 		error_msg();
 	init_game(&game);
 	map_parse(&game, *argv);
+	validate_map(&game);
 	return (0);
 }
 
