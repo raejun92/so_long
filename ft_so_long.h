@@ -20,6 +20,8 @@ typedef struct s_game {
 	void	*win;
 	void	*img;
 	int		cnt;
+	int		win_width;
+	int		win_height;
 	int		img_width;
 	int 	img_height;
 	char	**map;
