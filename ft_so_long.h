@@ -45,10 +45,17 @@ char	**ft_split(char const *s, char c);
 int	check_map_name(char *argv);
 void	map_parse(t_game *game, char *argv);
 
-/* check_map.c */
+/* ft_check_map.c */
 void	check_rectangle(char **map);
 void	check_wall(char **map);
 void	check_other_element(char **map);
 void	check_element(char **map);
+
+/* ft_draw.c */
+void	set_floor(t_game *game);
+void	set_wall(t_game *game);
+void	set_item(t_game *game);
+void	set_player(t_game *game);
+void	set_exit(t_game *game);
 
 #endif
