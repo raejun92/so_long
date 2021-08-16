@@ -6,11 +6,12 @@ void	init_game(t_game *game)
 	game->mlx = mlx_init();
 	game->win = 0;
 	game->img = 0;
-	game->cnt = 0;
+	game->move_cnt = 0;
 	game->win_width = 400;
 	game->win_height = 160;
 	game->img_width = 0;
 	game->img_height = 0;
+	game->item_cnt = 0;
 	game->map = 0;
 }
 
@@ -29,13 +30,91 @@ void	validate_map(t_game game)
 // 기능: 게임화면 그리기, 리턴: void
 void	draw_map(t_game *game)
 {
-	game->win = mlx_new_window(game->mlx, game->win_width, game->win_height, "so_long");
 	set_floor(game);
 	set_wall(game);
 	set_item(game);
 	set_player(game);
 	set_exit(game);
-	// mlx_loop(game->mlx);
+}
+
+// 기능: player위에 어떤 요소가 있는지 확인, 리턴: char 0,1,E,C중 하나
+static char	key_w_check_element(char **map, t_move *move)
+{
+	char	**tmp;
+	int		i;
+	int		j;
+
+	tmp = map;
+	i = 0;
+	while (*tmp != NULL)
+	{
+		j = 0;
+		while (map[i][j] != '\0')
+		{
+			if (map[i][j] == 'P')
+			{
+				move->move_width = i;
+				move->move_height = j;
+				return (map[i - 1][j]);
+			}
+			j++;
+		}
+		i++;
+		tmp++;
+	}
+	return (0);
+}
+
+// 기능: player가 위로 이동, 리턴: void
+static void	key_w_move(char **map, t_move move)
+{
+	char	tmp;
+
+	tmp = map[move.move_width][move.move_height];
+	map[move.move_width][move.move_height] = map[move.move_width - 1][move.move_height];
+	map[move.move_width - 1][move.move_height] = tmp;
+}
+
+// 기능: player가 아이템으로 이동 후 아이템 삭제, 리턴: void
+static void	key_w_get_item(char **map, t_move move)
+{
+	map[move.move_width - 1][move.move_height] = map[move.move_width][move.move_height];
+	map[move.move_width][move.move_height] = '0';
+	
+}
+
+// 기능: player가 출구로 이동 후 게임 종료, 리턴: void
+static void	key_w_exit(char **map, t_move move)
+{
+	map[move.move_width - 1][move.move_height] = map[move.move_width][move.move_height];
+	map[move.move_width][move.move_height] = '0';
+	// 아이템이 0면 종료
+	exit(0);
+}
+
+// 기능: player위로 이동, 리턴: void
+void	key_w_handler(char **map) // TODO: map을 game으로 바꿔야 함
+{
+	char	element;
+	t_move	move;
+	
+	move.move_width = 0;
+	move.move_height = 0;
+	// 현재 맵에서 플레이어 위치를 확인
+	element = key_w_check_element(map, &move);
+	if (element == '1')
+		return ;
+	else if (element == '0')
+		key_w_move(map, move);
+	else if (element == 'C')
+		key_w_get_item(map, move);
+	else if (element == 'E')
+		key_w_exit(map, move);
+	// element 요소에 따라 처리
+	// 플레이어 위에 1이 있으면 이동하지 않음
+	// 0이라면 이동 가능
+	// C라면 아이템 그림을 삭제 후 아이템 먹은 표시
+	
 }
 
 int	main(int argc, char **argv)
@@ -45,6 +124,7 @@ int	main(int argc, char **argv)
 	if (argc != 2 || !check_map_name(*(++argv)))
 		error_msg();
 	init_game(&game);
+	game.win = mlx_new_window(game.mlx, game.win_width, game.win_height, "so_long");
 	map_parse(&game, *argv);
 	validate_map(game);
 	draw_map(&game);

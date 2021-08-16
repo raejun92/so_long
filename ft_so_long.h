@@ -19,15 +19,23 @@ typedef struct s_game {
 	void	*mlx;
 	void	*win;
 	void	*img;
-	int		cnt;
+	int		move_cnt;
 	int		win_width;
 	int		win_height;
 	int		img_width;
 	int 	img_height;
+	int		item_cnt;
 	char	**map;
 }t_game;
 
+typedef struct s_move {
+	int		move_width;
+	int		move_height;
+}t_move;
+
 /* ft_so_long.c */
+void	key_w_handler(char **map);
+void	draw_map(t_game *game);
 
 /* ft_utils.c */
 void	error_msg(void);
