@@ -58,4 +58,9 @@ void	set_item(t_game *game);
 void	set_player(t_game *game);
 void	set_exit(t_game *game);
 
+/* ft_key_event.c */
+int	key_press(int key, t_game *game);
+int	click_x(t_game *game);
+void	process_event(t_game *game);
+
 #endif

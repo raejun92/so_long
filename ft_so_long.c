@@ -35,7 +35,7 @@ void	draw_map(t_game *game)
 	set_item(game);
 	set_player(game);
 	set_exit(game);
-	mlx_loop(game->mlx);
+	// mlx_loop(game->mlx);
 }
 
 int	main(int argc, char **argv)
@@ -48,7 +48,8 @@ int	main(int argc, char **argv)
 	map_parse(&game, *argv);
 	validate_map(game);
 	draw_map(&game);
-
+	process_event(&game);
+	mlx_loop(game.mlx);
 	// system("leaks a.out > leaks_result_temp; cat leaks_result_temp | grep leaked && rm -rf leaks_result_temp");
 	return (0);
 }
@@ -56,7 +57,7 @@ int	main(int argc, char **argv)
 /* 
 TODO
 1. 맵 파싱 [v]
-2. 맵에 따라 그리기
+2. 맵에 따라 그리기 [v]
 3. 캐릭터 움직임 (스왑)
 4. 벽 안 움직임 (노 스왑)
 5. 아이템 먹기 
