@@ -39,7 +39,7 @@ int	draw_map(t_game *game);
 
 /* ft_utils.c */
 void	error_msg(void);
-size_t	ft_strlen(const char *s);
+int	ft_strlen(const char *s);
 char	*ft_strdup(const char *s1);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);

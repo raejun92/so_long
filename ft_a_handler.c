@@ -53,7 +53,7 @@ static void	key_get_item(t_game *game, t_move move)
 }
 
 // 기능: player가 출구로 이동 후 게임 종료, 리턴: void
-static void	key_exit(t_game *game, t_move move)
+static void	key_exit(t_game *game)
 {
 	if (game->item_cnt == 0)
 		exit(0);
@@ -76,7 +76,7 @@ void	key_a_handler(t_game *game)
 	else if (element == 'C')
 		key_get_item(game, move);
 	else if (element == 'E')
-		key_exit(game, move);
+		key_exit(game);
 	draw_map(game);
 	// element 요소에 따라 처리
 	// 플레이어 위에 1이 있으면 이동하지 않음

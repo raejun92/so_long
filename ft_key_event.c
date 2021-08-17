@@ -19,7 +19,7 @@ int	key_press(int key, t_game *game)
 }
 
 // 기능: 창의 x버튼으로 프로그램 중지, 리턴: int
-int	click_x(t_game *game)
+int	click_x()
 {
 	exit(0);
 }

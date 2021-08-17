@@ -75,13 +75,3 @@ int	main(int argc, char **argv)
 	mlx_loop(game.mlx);
 	return (0);
 }
-
-/* 
-TODO
-1. 맵 파싱 [v]
-2. 맵에 따라 그리기 [v]
-3. 캐릭터 움직임 (스왑)
-4. 벽 안 움직임 (노 스왑)
-5. 아이템 먹기 
-6. 탈출하기 (아이템 다 먹었을 경우)
- */
