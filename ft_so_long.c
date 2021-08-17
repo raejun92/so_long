@@ -48,13 +48,14 @@ void	validate_map(t_game game)
 }
 
 // 기능: 게임화면 그리기, 리턴: void
-void	draw_map(t_game *game)
+int	draw_map(t_game *game)
 {
 	set_floor(game);
 	set_wall(game);
 	set_item(game);
 	set_player(game);
 	set_exit(game);
+	return (1);
 }
 
 int	main(int argc, char **argv)
@@ -67,7 +68,8 @@ int	main(int argc, char **argv)
 	game.win = mlx_new_window(game.mlx, game.win_width, game.win_height, "so_long");
 	map_parse(&game, *argv);
 	validate_map(game);
-	draw_map(&game);
+	// draw_map(&game);
+	mlx_loop_hook(game.mlx, &draw_map, &game);
 	init_item_cnt(&game);
 	process_event(&game);
 	mlx_loop(game.mlx);

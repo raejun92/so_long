@@ -35,7 +35,7 @@ typedef struct s_move {
 
 /* ft_so_long.c */
 void	key_w_handler(t_game *game);
-void	draw_map(t_game *game);
+int	draw_map(t_game *game);
 
 /* ft_utils.c */
 void	error_msg(void);
