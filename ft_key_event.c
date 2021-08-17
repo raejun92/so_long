@@ -4,18 +4,17 @@
 int	key_press(int key, t_game *game)
 {
 	if (key == KEY_W)
-	{
-		key_w_handler(game->map);
-		draw_map(game);
-	}
+		key_w_handler(game);
 	else if (key == KEY_S)
-		printf("down\n");
+		key_s_handler(game);
 	else if (key == KEY_A)
-		printf("left\n");
+		key_a_handler(game);
 	else if (key == KEY_D)
-		printf("right\n");
+		key_d_handler(game);
 	else if (key == KEY_ESC)
 		exit(0);
+	if (key == KEY_W || key == KEY_S || key == KEY_A || key == KEY_D)
+		printf("%d\n", game->move_cnt);
 	return (0);
 }
 

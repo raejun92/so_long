@@ -34,7 +34,7 @@ typedef struct s_move {
 }t_move;
 
 /* ft_so_long.c */
-void	key_w_handler(char **map);
+void	key_w_handler(t_game *game);
 void	draw_map(t_game *game);
 
 /* ft_utils.c */
@@ -70,5 +70,17 @@ void	set_exit(t_game *game);
 int	key_press(int key, t_game *game);
 int	click_x(t_game *game);
 void	process_event(t_game *game);
+
+/* ft_w_handler.c */
+void	key_w_handler(t_game *game);
+
+/* ft_s_handler.c */
+void	key_s_handler(t_game *game);
+
+/* ft_a_handler.c */
+void	key_a_handler(t_game *game);
+
+/* ft_d_handler.c */
+void	key_d_handler(t_game *game);
 
 #endif
