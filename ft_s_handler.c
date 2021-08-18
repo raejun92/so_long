@@ -75,7 +75,6 @@ void	key_s_handler(t_game *game)
 		key_get_item(game, move);
 	else if (element == 'E')
 		key_exit(game);
-	draw_map(game);
 	// element 요소에 따라 처리
 	// 플레이어 위에 1이 있으면 이동하지 않음
 	// 0이라면 이동 가능

@@ -68,10 +68,15 @@ int	main(int argc, char **argv)
 	game.win = mlx_new_window(game.mlx, game.win_width, game.win_height, "so_long");
 	map_parse(&game, *argv);
 	validate_map(game);
-	// draw_map(&game);
 	mlx_loop_hook(game.mlx, &draw_map, &game);
 	init_item_cnt(&game);
 	process_event(&game);
 	mlx_loop(game.mlx);
 	return (0);
 }
+
+/* TODO
+맵 엔터 처리
+맵 빈파일
+윈도우 크기 동적
+ */
