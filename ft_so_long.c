@@ -32,7 +32,7 @@ int	main(int argc, char **argv)
 	init_game(&game);
 	map_parse(&game, *argv);
 	validate_map(game);
-	game.win = mlx_new_window(game.mlx, game.win_width, game.win_height, "so_long");
+	init_window(&game);
 	mlx_loop_hook(game.mlx, &draw_map, &game);
 	init_item_cnt(&game);
 	process_event(&game);

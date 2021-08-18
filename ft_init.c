@@ -34,3 +34,35 @@ void	init_item_cnt(t_game *game)
 		tmp++;
 	}
 }
+
+
+// 기능: window 가로 길이, 리턴: int window의 width 길이
+static int	init_width(char **map)
+{
+	int	len;
+
+	len = ft_strlen(*map);
+	return (len);
+}
+
+// 기능: window 세로 길이, 리턴: int window의 height
+static int	init_height(char **map)
+{
+	int	len;
+
+	len = 0;
+	while (*map != NULL)
+	{
+		len++;
+		map++;
+	}
+	return (len);
+}
+
+// 화면(window) 설정, 리턴: void
+void	init_window(t_game *game)
+{
+	game->win_width = init_width(game->map) * 40;
+	game->win_height = init_height(game->map) * 40;
+	game->win = mlx_new_window(game->mlx, game->win_width, game->win_height, "so_long");
+}

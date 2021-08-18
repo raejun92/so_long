@@ -85,5 +85,6 @@ void	key_d_handler(t_game *game);
 /* ft_init.c */
 void	init_game(t_game *game);
 void	init_item_cnt(t_game *game);
+void	init_window(t_game *game);
 
 #endif
