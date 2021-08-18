@@ -14,7 +14,8 @@ FILES = ft_so_long.c \
 		ft_w_handler.c \
 		ft_s_handler.c \
 		ft_a_handler.c \
-		ft_d_handler.c
+		ft_d_handler.c \
+		ft_init.c
 
 .PHONY : all clean fclean re
 
