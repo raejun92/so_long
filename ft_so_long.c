@@ -3,6 +3,11 @@
 // 기능: 파싱한 맵이 정상적인 맵인지 확인, 리턴: void
 void	validate_map(t_game game)
 {
+	if (*game.map == NULL) // 맵이 비어 있을 경우 예외처리
+	{
+		free_malloc(game.map);
+		error_msg();
+	}
 	// 맵이 1로 둘러 쌓여있는 직사각형인지 확인 -> 모든 라인의 개수가 똑같은지 확인해야 함
 	check_rectangle(game.map);
 	check_wall(game.map);
@@ -39,9 +44,3 @@ int	main(int argc, char **argv)
 	mlx_loop(game.mlx);
 	return (0);
 }
-
-/* TODO
-맵 엔터 처리
-맵 빈파일
-윈도우 크기 동적
- */

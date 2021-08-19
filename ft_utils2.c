@@ -61,7 +61,7 @@ static void	str_point_len(char **str_point, unsigned int *str_len,
 	return ;
 }
 
-static char	**free_malloc(char **str)
+char	**free_malloc(char **str)
 {
 	unsigned int	i;
 

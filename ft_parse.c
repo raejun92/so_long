@@ -25,7 +25,7 @@ void	map_parse(t_game *game, char *argv)
 	char	*tmp;
 	char	*chunk;
 
-	fd = open(argv, O_RDONLY); 
+	fd = open(argv, O_RDONLY);
 	if (fd < 0)
 		error_msg();
 	tmp = ft_strdup("");

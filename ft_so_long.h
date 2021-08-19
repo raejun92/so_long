@@ -47,6 +47,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize);
 /* ft_utils2.c */
 char	*ft_strjoin(char const *s1, char const *s2);
 char	**ft_split(char const *s, char c);
+char	**free_malloc(char **str);
 
 /* ft_parse.c */
 int	check_map_name(char *argv);
