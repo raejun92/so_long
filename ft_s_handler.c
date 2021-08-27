@@ -1,7 +1,5 @@
 #include "ft_so_long.h"
 
-#include "ft_so_long.h"
-
 // 기능: player위에 어떤 요소가 있는지 확인, 리턴: char 0,1,E,C중 하나
 static char	key_check_element(char **map, t_move *move)
 {
