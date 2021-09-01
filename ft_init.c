@@ -59,7 +59,7 @@ static int	init_height(char **map)
 	return (len);
 }
 
-// 화면(window) 설정, 리턴: void
+// 가능: 화면(window) 설정, 리턴: void
 void	init_window(t_game *game)
 {
 	game->win_width = init_width(game->map) * 40;

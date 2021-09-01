@@ -21,9 +21,9 @@ static void	check_wall2(char **map, int len, int i)
 	j = 0;
 	while (j < len)
 	{
-		if (map[j][0] != '1')
+		if (map[j][0] != '1') // 직사각형 왼쪽 부분 1인지 확인
 			error_msg();
-		if (map[j][i - 1] != '1')
+		if (map[j][i - 1] != '1') // 직사각형 오른쪽 부분 1인지 확인
 			error_msg();
 		j++;
 	}
@@ -44,13 +44,13 @@ void	check_wall(char **map)
 	while (*tmp != NULL)
 	{
 		tmp++;
-		len++;
+		len++; // 직사각형 세로 길이
 	}
 	while (map[0][i] != '\0')
 	{
-		if (map[0][i] != '1')
+		if (map[0][i] != '1') // 직사각형 윗부분 1인지 확인
 			error_msg();
-		if (map[len - 1][i] != '1')
+		if (map[len - 1][i] != '1') // 직사각형 아래부분 1인지 확인
 			error_msg();
 		i++;
 	}

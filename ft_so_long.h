@@ -68,7 +68,7 @@ void	set_exit(t_game *game);
 
 /* ft_key_event.c */
 int	key_press(int key, t_game *game);
-int	click_x(t_game *game);
+int	click_x(void);
 void	process_event(t_game *game);
 
 /* ft_w_handler.c */

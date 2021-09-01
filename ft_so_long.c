@@ -25,7 +25,7 @@ int	draw_map(t_game *game)
 	set_item(game);
 	set_player(game);
 	set_exit(game);
-	return (1);
+	return (1); // mlx_loop_hook은 리턴값이 필요
 }
 
 int	main(int argc, char **argv)
@@ -38,7 +38,7 @@ int	main(int argc, char **argv)
 	map_parse(&game, *argv);
 	validate_map(game);
 	init_window(&game);
-	mlx_loop_hook(game.mlx, &draw_map, &game);
+	mlx_loop_hook(game.mlx, &draw_map, &game); // 이걸 안하면 실행중에 릭 발생
 	init_item_cnt(&game);
 	process_event(&game);
 	mlx_loop(game.mlx);

@@ -20,6 +20,7 @@ void	set_floor(t_game *game)
 	}
 }
 
+// 기능: 벽 그리기, 리턴: void
 void	set_wall(t_game *game)
 {
 	int	i;
