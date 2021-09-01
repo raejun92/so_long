@@ -91,17 +91,17 @@ void	check_element(char **map)
 		while ((*map)[i] != '\0')
 		{
 			if ((*map)[i] == 'P')
-				element[0] = 1;
+				element[0] += 1;
 			else if ((*map)[i] == 'C')
-				element[1] = 1;
+				element[1] += 1;
 			else if ((*map)[i] == 'E')
-				element[2] = 1;
+				element[2] += 1;
 			i++;
 		}
 		map++;
 	}
 	i = 0;
 	while (i <= 2)
-		if (element[i++] != 1)
+		if (element[i++] < 1 || element[0] > 1)
 			error_msg();	
 }
